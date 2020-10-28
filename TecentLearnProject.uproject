@@ -1,0 +1,16 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{6C24227B-4FF9-283D-0719-62A6BD4E0BBD}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "TecentLearnProject",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
+		}
+	]
+}
