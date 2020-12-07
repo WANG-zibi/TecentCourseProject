@@ -34,7 +34,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Effect")
 	UParticleSystem* MuzzleEffect;
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Effect")
-	UParticleSystem* ImpactEffect;
+	UParticleSystem* DefaultImpactEffect;
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Effect")
+	UParticleSystem* FleshImpactEffect;
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Effect")
 	UParticleSystem* TracerEffect;
 

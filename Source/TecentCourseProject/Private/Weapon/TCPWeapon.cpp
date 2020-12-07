@@ -5,6 +5,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
+#include "PhysicalMaterials/PhysicalMaterial.h"
 #include "Particles/ParticleSystem.h"
 #include "Particles/ParticleSystemComponent.h"
 // Sets default values
@@ -44,14 +45,34 @@ void ATCPWeapon::Fire()
 		QueryParams.AddIgnoredActor(CurOwner);
 		QueryParams.AddIgnoredActor(this);
 		QueryParams.bTraceComplex = true;
+		QueryParams.bReturnPhysicalMaterial=true;
 		FVector TracerEndPoint = TraceEnd;
 		if(GetWorld()->LineTraceSingleByChannel(Hit,EyeLocation,TraceEnd,ECC_Visibility,QueryParams))
 		{
 			AActor* HitActor = Hit.GetActor();
 			UGameplayStatics::ApplyPointDamage(HitActor,20.0f,ShotDirection,Hit,CurOwner->GetInstigatorController(),this,DamageTye);
-			if(ImpactEffect)
+			
+			auto PhysicSurface = UPhysicalMaterial::DetermineSurfaceType(Hit.PhysMaterial.Get());
+
+			UParticleSystem* SelectEffect = nullptr;
+			switch (PhysicSurface)
 			{
-				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(),ImpactEffect,Hit.ImpactPoint,Hit.ImpactNormal.Rotation());
+			
+				case SurfaceType1:
+					SelectEffect = FleshImpactEffect;
+					break;
+				case SurfaceType2:
+					SelectEffect = FleshImpactEffect;
+					break;
+				case SurfaceType3:
+					break;
+				default:
+					SelectEffect = DefaultImpactEffect;
+					break;
+			}
+			if(SelectEffect)
+			{
+				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(),SelectEffect,Hit.ImpactPoint,Hit.ImpactNormal.Rotation());
 			}
 			TracerEndPoint = Hit.ImpactPoint;
 		}
