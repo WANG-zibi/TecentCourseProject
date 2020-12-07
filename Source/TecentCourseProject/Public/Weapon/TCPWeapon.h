@@ -15,30 +15,40 @@ class TECENTCOURSEPROJECT_API ATCPWeapon : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ATCPWeapon();
-	
+	UFUNCTION(BlueprintCallable,Category="Weapon")
+    virtual void Fire();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	UFUNCTION(BlueprintCallable,Category="Weapon")
-	virtual void Fire();
-
-
+	
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Weapon")
 	TSubclassOf<class UDamageType>DamageTye;
 	UPROPERTY(VisibleDefaultsOnly,BlueprintReadOnly,Category="Weapon")
 	FName MuzzleSocketName;
 	UPROPERTY(VisibleDefaultsOnly,BlueprintReadOnly,Category="Weapon")
 	FName TracerTargetName;
-	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Weapon")
+	/*
+	 * 特效相关变量、指针
+	 */
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Effect")
 	UParticleSystem* MuzzleEffect;
-	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Weapon")
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Effect")
 	UParticleSystem* ImpactEffect;
-	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Weapon")
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Effect")
 	UParticleSystem* TracerEffect;
+
+	UPROPERTY(EditDefaultsOnly,Category="Weapon")
+	TSubclassOf<UCameraShake> OpenFireShake;
+	/*
+	 * 武器Mesh
+	 */
 UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Components")
 	USkeletalMeshComponent* WeaponMesh;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+	void WeaponEffect(FVector& TracerEndPoint);
+	
+	
 };

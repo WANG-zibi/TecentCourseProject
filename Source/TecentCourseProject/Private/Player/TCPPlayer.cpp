@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Player/TCPPlayer.h"
-
+#include"Components/SkeletalMeshComponent.h"
 // Sets default values
 ATCPPlayer::ATCPPlayer()
 {
@@ -11,10 +11,18 @@ ATCPPlayer::ATCPPlayer()
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpingArmComp"));
 	SpringArmComp->SetupAttachment(RootComponent);
 	SpringArmComp->bUsePawnControlRotation = true;
+	/*
+	 * 设置摄像头
+	 */
 	CamComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CamComp"));
 	CamComp->SetupAttachment(SpringArmComp);
+	/*
+	 * 聚焦相关变量初始化
+	 */
 	ZoomFOV = 65.0f;
 	ZoomSpeeed = 2.0f;
+
+	SocketName = "WeaponSocket";
 }
 
 // Called when the game starts or when spawned
@@ -22,6 +30,14 @@ void ATCPPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 	DefaultFOV = CamComp->FieldOfView;
+	FActorSpawnParameters SpawnParameters;
+	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	CurWeapon = GetWorld()->SpawnActor<ATCPWeapon>(InitWeaponClass,FVector::ZeroVector,FRotator::ZeroRotator,SpawnParameters);
+	if(CurWeapon)
+	{
+		CurWeapon->SetOwner(this);
+		CurWeapon->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetIncludingScale,SocketName);
+	}
 }
 
 // Called every frame
@@ -47,9 +63,11 @@ void ATCPPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	PlayerInputComponent->BindAction("Crouch",IE_Released,this,&ATCPPlayer::EndCrouch);
 	PlayerInputComponent->BindAction("Zoom",IE_Pressed,this,&ATCPPlayer::BeginZoom);
 	PlayerInputComponent->BindAction("Zoom",IE_Released,this,&ATCPPlayer::EndZoom);
-	
+	PlayerInputComponent->BindAction("Fire",IE_Pressed,this,&ATCPPlayer::Fire);
 }
-
+/*
+ * 重写获取摄像机镜头函数
+ */
 FVector ATCPPlayer::GetPawnViewLocation() const
 {
 	if(CamComp)
@@ -58,34 +76,54 @@ FVector ATCPPlayer::GetPawnViewLocation() const
 	}
 	return Super::GetPawnViewLocation();
 }
-
+/*
+ * 前后移动
+ */
 void ATCPPlayer::MoveForward(float val)
 {
 	AddMovementInput(GetActorForwardVector() * val);
 }
-
+/*
+ * 左右移动
+ */
 void ATCPPlayer::MoveRight(float val)
 {
 	AddMovementInput(GetActorRightVector() * val);
 }
-
+/*
+ * 开始下蹲
+ */
 void ATCPPlayer::BeginCrouch()
 {
 	Crouch();
 }
-
+/*
+ * 结束下蹲
+ */
 void ATCPPlayer::EndCrouch()
 {
 	UnCrouch();
 }
-
+/*
+ * 开始聚焦
+ */
 void ATCPPlayer::BeginZoom()
 {
 	bWantToZoom = true;
 }
-
+/*
+ * 结束聚焦
+ */
 void ATCPPlayer::EndZoom()
 {
 	bWantToZoom = false;
+}
+
+void ATCPPlayer::Fire()
+{
+		if(CurWeapon)
+		{
+			CurWeapon->Fire();
+		}
 }
 

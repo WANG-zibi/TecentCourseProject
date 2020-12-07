@@ -8,9 +8,10 @@
 #include "Particles/ParticleSystem.h"
 #include "Particles/ParticleSystemComponent.h"
 // Sets default values
+
 ATCPWeapon::ATCPWeapon()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+
 	PrimaryActorTick.bCanEverTick = true;
 	WeaponMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WeaponMesh"));
 	RootComponent = WeaponMesh;
@@ -54,21 +55,9 @@ void ATCPWeapon::Fire()
 			}
 			TracerEndPoint = Hit.ImpactPoint;
 		}
+		
 		//DrawDebugLine(GetWorld(),EyeLocation,TraceEnd,FColor::White,false,2.0f,0,1.0f);
-		if(MuzzleEffect)
-		{
-			UGameplayStatics::SpawnEmitterAttached(MuzzleEffect,WeaponMesh,MuzzleSocketName);
-		}
-	
-	FVector MuzzleLocation = WeaponMesh->GetSocketLocation(MuzzleSocketName);
-		if(TracerEffect)
-		{
-			UParticleSystemComponent* TracerComp =UGameplayStatics::SpawnEmitterAtLocation(GetWorld(),TracerEffect,MuzzleLocation);
-			if(TracerComp)
-			{
-				TracerComp->SetVectorParameter(TracerTargetName,TracerEndPoint);
-			}
-		}
+		WeaponEffect(TracerEndPoint);
 	}
 	
 }
@@ -78,5 +67,32 @@ void ATCPWeapon::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void ATCPWeapon::WeaponEffect(FVector& TracerEndPoint)
+{
+	if(MuzzleEffect)
+	{
+		UGameplayStatics::SpawnEmitterAttached(MuzzleEffect,WeaponMesh,MuzzleSocketName);
+	}
+	
+	FVector MuzzleLocation = WeaponMesh->GetSocketLocation(MuzzleSocketName);
+	if(TracerEffect)
+	{
+		UParticleSystemComponent* TracerComp =UGameplayStatics::SpawnEmitterAtLocation(GetWorld(),TracerEffect,MuzzleLocation);
+		if(TracerComp)
+		{
+			TracerComp->SetVectorParameter(TracerTargetName,TracerEndPoint);
+		}
+	}
+	APawn* MyActor = Cast<APawn>(GetOwner());
+	if(MyActor)
+	{
+		auto PC =Cast<APlayerController>(MyActor->GetController());
+		if(PC)
+		{
+			PC->ClientPlayCameraShake(OpenFireShake);
+		}
+	}
 }
 
