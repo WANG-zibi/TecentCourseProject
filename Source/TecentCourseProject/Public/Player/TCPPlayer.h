@@ -28,16 +28,27 @@ protected:
 	void BeginCrouch();
 	void EndCrouch();
 
+	void BeginZoom();
+	void EndZoom();
 
 	
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Components")
 	UCameraComponent* CamComp;
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Components")
 	USpringArmComponent* SpringArmComp;
+
+
+	bool bWantToZoom;
+	UPROPERTY(EditDefaultsOnly,Category="Zoom",meta = (ClampMin = 0.1,ClampMax = 100))
+	float ZoomSpeeed;
+	UPROPERTY(EditDefaultsOnly,Category="Zoom")
+	float ZoomFOV;
+	float DefaultFOV;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	virtual FVector GetPawnViewLocation() const override;
+
 };

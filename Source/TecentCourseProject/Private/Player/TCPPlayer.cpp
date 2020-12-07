@@ -13,21 +13,24 @@ ATCPPlayer::ATCPPlayer()
 	SpringArmComp->bUsePawnControlRotation = true;
 	CamComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CamComp"));
 	CamComp->SetupAttachment(SpringArmComp);
-
+	ZoomFOV = 65.0f;
+	ZoomSpeeed = 2.0f;
 }
 
 // Called when the game starts or when spawned
 void ATCPPlayer::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	DefaultFOV = CamComp->FieldOfView;
 }
 
 // Called every frame
 void ATCPPlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	const float CurrentFOV = bWantToZoom ? ZoomFOV:DefaultFOV;
+	float thisFOV = FMath::FInterpTo(CamComp->FieldOfView,CurrentFOV,DeltaTime,ZoomSpeeed);
+	CamComp->SetFieldOfView(thisFOV);
 }
 
 // Called to bind functionality to input
@@ -42,6 +45,9 @@ void ATCPPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	PlayerInputComponent->BindAction("Crouch",IE_Pressed,this,&ATCPPlayer::BeginCrouch);
 	PlayerInputComponent->BindAction("Jump",IE_Pressed,this,&ATCPPlayer::Jump);
 	PlayerInputComponent->BindAction("Crouch",IE_Released,this,&ATCPPlayer::EndCrouch);
+	PlayerInputComponent->BindAction("Zoom",IE_Pressed,this,&ATCPPlayer::BeginZoom);
+	PlayerInputComponent->BindAction("Zoom",IE_Released,this,&ATCPPlayer::EndZoom);
+	
 }
 
 FVector ATCPPlayer::GetPawnViewLocation() const
@@ -71,5 +77,15 @@ void ATCPPlayer::BeginCrouch()
 void ATCPPlayer::EndCrouch()
 {
 	UnCrouch();
+}
+
+void ATCPPlayer::BeginZoom()
+{
+	bWantToZoom = true;
+}
+
+void ATCPPlayer::EndZoom()
+{
+	bWantToZoom = false;
 }
 
