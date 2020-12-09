@@ -7,10 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a6968ff6-ab3b-4db4-a815-8feaf8519843" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TecentCourseProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TecentCourseProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AnimStarterPack/UE4_Mannequin/Mesh/SK_Mannequin_PhysicsAsset.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AnimStarterPack/UE4_Mannequin/Mesh/SK_Mannequin_PhysicsAsset.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/BP_Rifle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/BP_Rifle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Level1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Level1.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/TCPWeapon.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/TCPWeapon.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/TCPWeapon.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/TCPWeapon.h" afterDir="false" />
     </list>
@@ -36,9 +32,10 @@
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/TCPGrenadeWeapon.cpp" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/TCPPlayer.h" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/TCPPlayer.cpp" />
-      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/TCPWeapon.h" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/TecentCourseProject.h" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/TCPWeapon.h" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/TCPWeapon.cpp" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/HlealthComponent.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lGd9Y8iaJnrBY9jEd9pOgYEHrh" />
@@ -285,7 +282,9 @@
       <workItem from="1607227246059" duration="149000" />
       <workItem from="1607227413397" duration="15005000" />
       <workItem from="1607316991861" duration="7461000" />
-      <workItem from="1607336800765" duration="315000" />
+      <workItem from="1607336800765" duration="426000" />
+      <workItem from="1607408073970" duration="336000" />
+      <workItem from="1607515755346" duration="40000" />
     </task>
     <servers />
   </component>

@@ -51,29 +51,7 @@ void ATCPWeapon::Fire()
 		{
 			AActor* HitActor = Hit.GetActor();
 			UGameplayStatics::ApplyPointDamage(HitActor,20.0f,ShotDirection,Hit,CurOwner->GetInstigatorController(),this,DamageTye);
-			
-			auto PhysicSurface = UPhysicalMaterial::DetermineSurfaceType(Hit.PhysMaterial.Get());
-
-			UParticleSystem* SelectEffect = nullptr;
-			switch (PhysicSurface)
-			{
-			
-				case SurfaceType1:
-					SelectEffect = FleshImpactEffect;
-					break;
-				case SurfaceType2:
-					SelectEffect = FleshImpactEffect;
-					break;
-				case SurfaceType3:
-					break;
-				default:
-					SelectEffect = DefaultImpactEffect;
-					break;
-			}
-			if(SelectEffect)
-			{
-				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(),SelectEffect,Hit.ImpactPoint,Hit.ImpactNormal.Rotation());
-			}
+			HitEffect(Hit);
 			TracerEndPoint = Hit.ImpactPoint;
 		}
 		
@@ -115,5 +93,32 @@ void ATCPWeapon::WeaponEffect(FVector& TracerEndPoint)
 			PC->ClientPlayCameraShake(OpenFireShake);
 		}
 	}
+}
+
+void ATCPWeapon::HitEffect(FHitResult& Hit)
+{
+	auto PhysicSurface = UPhysicalMaterial::DetermineSurfaceType(Hit.PhysMaterial.Get());
+
+	UParticleSystem* SelectEffect = nullptr;
+	switch (PhysicSurface)
+	{
+			
+	case SurfaceType1:
+		SelectEffect = FleshImpactEffect;
+		break;
+	case SurfaceType2:
+		SelectEffect = FleshImpactEffect;
+		break;
+	case SurfaceType3:
+		break;
+	default:
+		SelectEffect = DefaultImpactEffect;
+		break;
+	}
+	if(SelectEffect)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(),SelectEffect,Hit.ImpactPoint,Hit.ImpactNormal.Rotation());
+	}
+	
 }
 

@@ -52,5 +52,6 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	void WeaponEffect(FVector& TracerEndPoint);
 	
+	void HitEffect(FHitResult& Hit);
 	
 };
