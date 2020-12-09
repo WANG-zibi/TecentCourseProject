@@ -2,6 +2,7 @@
 
 #include "Player/TCPPlayer.h"
 #include"Components/SkeletalMeshComponent.h"
+#include "Components/CapsuleComponent.h"
 // Sets default values
 ATCPPlayer::ATCPPlayer()
 {
@@ -11,6 +12,7 @@ ATCPPlayer::ATCPPlayer()
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpingArmComp"));
 	SpringArmComp->SetupAttachment(RootComponent);
 	SpringArmComp->bUsePawnControlRotation = true;
+	
 	/*
 	 * 设置摄像头
 	 */

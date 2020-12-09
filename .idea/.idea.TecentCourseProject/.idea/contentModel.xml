@@ -43524,7 +43524,7 @@
         <e p="TecentCourseProject" t="Include">
           <e p="Private" t="Include">
             <e p="Player" t="Include">
-              <e p="HlealthComponent.cpp" t="Include" />
+              <e p="HealthComponent.cpp" t="Include" />
               <e p="TCPPlayer.cpp" t="Include" />
             </e>
             <e p="Weapon" t="Include">
@@ -43534,7 +43534,7 @@
           </e>
           <e p="Public" t="Include">
             <e p="Player" t="Include">
-              <e p="HlealthComponent.h" t="Include" />
+              <e p="HealthComponent.h" t="Include" />
               <e p="TCPPlayer.h" t="Include" />
             </e>
             <e p="Weapon" t="Include">
