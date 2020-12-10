@@ -23,11 +23,13 @@ protected:
 	UPROPERTY(BlueprintReadOnly,Category="HP")
 	float HP;
 
+	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="HP")
 	float DefaultHP;
 	UFUNCTION()
 	void TakeDamage(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
-public:	
+public:
+	float GetHP() const;
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	UPROPERTY(BlueprintAssignable,Category="Events")

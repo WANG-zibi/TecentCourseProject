@@ -2,7 +2,9 @@
 
 #include "Player/TCPPlayer.h"
 #include"Components/SkeletalMeshComponent.h"
+#include "Player/HealthComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 // Sets default values
 ATCPPlayer::ATCPPlayer()
 {
@@ -12,7 +14,8 @@ ATCPPlayer::ATCPPlayer()
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpingArmComp"));
 	SpringArmComp->SetupAttachment(RootComponent);
 	SpringArmComp->bUsePawnControlRotation = true;
-	
+
+	HPComp = CreateDefaultSubobject<UHealthComponent>(TEXT("HelathComp"));
 	/*
 	 * 设置摄像头
 	 */
@@ -23,7 +26,7 @@ ATCPPlayer::ATCPPlayer()
 	 */
 	ZoomFOV = 65.0f;
 	ZoomSpeeed = 2.0f;
-
+	bDied = false;
 	SocketName = "WeaponSocket";
 }
 
@@ -40,6 +43,8 @@ void ATCPPlayer::BeginPlay()
 		CurWeapon->SetOwner(this);
 		CurWeapon->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetIncludingScale,SocketName);
 	}
+
+	HPComp->OnHealthChanged.AddDynamic(this,&ATCPPlayer::OnHealthChanged);
 }
 
 // Called every frame
@@ -128,4 +133,21 @@ void ATCPPlayer::Fire()
 			CurWeapon->Fire();
 		}
 }
+
+void ATCPPlayer::OnHealthChanged(class UHealthComponent* HealthComp,float HP,float HPDelta,const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
+{
+
+	if(HP <=0.0f && !bDied)
+	{
+		bDied = true;
+		GetMovementComponent()->StopMovementImmediately();
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+		DetachFromControllerPendingDestroy();
+		SetLifeSpan(10.0f);
+		
+	}
+	
+}
+
 

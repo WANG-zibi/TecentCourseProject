@@ -42,6 +42,11 @@ void UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDam
 	OnHealthChanged.Broadcast(this,HP,Damage,DamageType,InstigatedBy,DamageCauser);
 }
 
+float UHealthComponent::GetHP() const
+{
+	return HP;
+}
+
 // Called every frame
 void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
