@@ -7,6 +7,20 @@
 #include "TCPWeapon.generated.h"
 class USkeletalMeshComponent;
 class UParticleSystem;
+USTRUCT()
+struct FHitScanTrace
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY()
+	TEnumAsByte<EPhysicalSurface> SurfaceType;
+
+	UPROPERTY()
+	FVector_NetQuantize TraceTo;
+	
+};
+
+
 UCLASS()
 class TECENTCOURSEPROJECT_API ATCPWeapon : public AActor
 {
@@ -47,11 +61,20 @@ protected:
 	 */
 UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Components")
 	USkeletalMeshComponent* WeaponMesh;
+
+	
+	UFUNCTION(Server,Reliable,WithValidation)
+    void ServerFire();
+
+	UPROPERTY(ReplicatedUsing=OnRep_HitScanTrace)
+	FHitScanTrace HitScanTrace;
+	UFUNCTION()
+	void OnRep_HitScanTrace();
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	void WeaponEffect(FVector& TracerEndPoint);
 	
-	void HitEffect(FHitResult& Hit);
+	void HitEffect(FVector ImoactPoint,EPhysicalSurface SurfaceType);
 	
 };

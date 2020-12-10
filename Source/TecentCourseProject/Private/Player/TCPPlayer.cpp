@@ -5,6 +5,7 @@
 #include "Player/HealthComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Net/UnrealNetwork.h"
 // Sets default values
 ATCPPlayer::ATCPPlayer()
 {
@@ -35,16 +36,20 @@ void ATCPPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 	DefaultFOV = CamComp->FieldOfView;
-	FActorSpawnParameters SpawnParameters;
-	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-	CurWeapon = GetWorld()->SpawnActor<ATCPWeapon>(InitWeaponClass,FVector::ZeroVector,FRotator::ZeroRotator,SpawnParameters);
-	if(CurWeapon)
-	{
-		CurWeapon->SetOwner(this);
-		CurWeapon->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetIncludingScale,SocketName);
-	}
-
 	HPComp->OnHealthChanged.AddDynamic(this,&ATCPPlayer::OnHealthChanged);
+	if(GetLocalRole() == ROLE_Authority)
+	{
+		FActorSpawnParameters SpawnParameters;
+		SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		CurWeapon = GetWorld()->SpawnActor<ATCPWeapon>(InitWeaponClass,FVector::ZeroVector,FRotator::ZeroRotator,SpawnParameters);
+		if(CurWeapon)
+		{
+			CurWeapon->SetOwner(this);
+			CurWeapon->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetIncludingScale,SocketName);
+		}
+	}
+	
+
 }
 
 // Called every frame
@@ -83,6 +88,14 @@ FVector ATCPPlayer::GetPawnViewLocation() const
 	}
 	return Super::GetPawnViewLocation();
 }
+
+void ATCPPlayer::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(ATCPPlayer,CurWeapon);
+	DOREPLIFETIME(ATCPPlayer,bDied);
+}
+
 /*
  * 前后移动
  */
@@ -133,6 +146,8 @@ void ATCPPlayer::Fire()
 			CurWeapon->Fire();
 		}
 }
+
+
 
 void ATCPPlayer::OnHealthChanged(class UHealthComponent* HealthComp,float HP,float HPDelta,const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
 {

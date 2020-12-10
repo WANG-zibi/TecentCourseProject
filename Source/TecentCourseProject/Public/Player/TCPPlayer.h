@@ -4,12 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Camera/CameraComponent.h"
-
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/Character.h"
 #include "Weapon/TCPWeapon.h"
 
 #include "TCPPlayer.generated.h"
+
+
 UCLASS()
 class TECENTCOURSEPROJECT_API ATCPPlayer : public ACharacter
 {
@@ -34,7 +35,7 @@ protected:
 	void EndZoom();
 
 
-	UPROPERTY(VisibleDefaultsOnly,Category="Weapon")
+	UPROPERTY(Replicated,VisibleDefaultsOnly,Category="Weapon")
 	ATCPWeapon* CurWeapon;
 	UPROPERTY(EditDefaultsOnly,Category="Weapon")
 	TSubclassOf<ATCPWeapon>InitWeaponClass;
@@ -42,6 +43,8 @@ protected:
 	FName SocketName;
 	
 	void Fire();
+
+
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Components")
 	UCameraComponent* CamComp;
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Components")
@@ -52,7 +55,7 @@ protected:
 
 	UFUNCTION()
 	void OnHealthChanged(class UHealthComponent* HealthComp,float HP,float HPDelta,const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
-	UPROPERTY(BlueprintReadOnly,Category="Player")
+	UPROPERTY(Replicated,BlueprintReadOnly,Category="Player")
 	bool bDied;
 	
 	bool bWantToZoom;
@@ -70,5 +73,6 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	virtual FVector GetPawnViewLocation() const override;
-	
+
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 };

@@ -20,7 +20,7 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
-	UPROPERTY(BlueprintReadOnly,Category="HP")
+	UPROPERTY(Replicated,BlueprintReadOnly,Category="HP")
 	float HP;
 
 	
