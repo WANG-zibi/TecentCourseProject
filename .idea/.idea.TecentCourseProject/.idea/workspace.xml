@@ -5,17 +5,7 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6968ff6-ab3b-4db4-a815-8feaf8519843" name="Default Changelist" comment="学习多播委托用法，用于Debug">
-      <change afterPath="$PROJECT_DIR$/Content/UI/Health_View.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TecentCourseProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TecentCourseProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AnimStarterPack/UE4ASP_HeroTPP_AnimBlueprint.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AnimStarterPack/UE4ASP_HeroTPP_AnimBlueprint.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/PlayerPawn.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/PlayerPawn.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Level1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Level1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/HealthComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/HealthComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/TCPPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/TCPPlayer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/HealthComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/HealthComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/TCPPlayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/TCPPlayer.h" afterDir="false" />
-    </list>
+    <list default="true" id="a6968ff6-ab3b-4db4-a815-8feaf8519843" name="Default Changelist" comment="添加HP Wiget，伤害机制，以及死亡动画效果" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -298,7 +288,7 @@
       <workItem from="1607336800765" duration="426000" />
       <workItem from="1607408073970" duration="336000" />
       <workItem from="1607515755346" duration="3863000" />
-      <workItem from="1607582835723" duration="3126000" />
+      <workItem from="1607582835723" duration="3444000" />
     </task>
     <task id="LOCAL-00001" summary="添加生命值组件">
       <created>1607515853219</created>
@@ -314,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607519616519</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="添加HP Wiget，伤害机制，以及死亡动画效果">
+      <created>1607586265740</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1607586265740</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,7 +336,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="添加生命值组件" />
     <MESSAGE value="学习多播委托用法，用于Debug" />
-    <option name="LAST_COMMIT_MESSAGE" value="学习多播委托用法，用于Debug" />
+    <MESSAGE value="添加HP Wiget，伤害机制，以及死亡动画效果" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加HP Wiget，伤害机制，以及死亡动画效果" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
