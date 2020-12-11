@@ -14,3 +14,11 @@
 网盘链接
 链接：https://pan.baidu.com/s/1Fq3nk6kQ13Mcd3cSFocstA 
 提取码：zop2 
+
+## 2020/12/9
+
+重构代码，实现了多人对战功能，死亡时有死亡表现
+
+链接：https://pan.baidu.com/s/14Uq02u6jhkhp77fQjWiSJg 
+提取码：edu2 
+复制这段内容后打开百度网盘手机App，操作更方便哦--来自百度网盘超级会员V1的分享
