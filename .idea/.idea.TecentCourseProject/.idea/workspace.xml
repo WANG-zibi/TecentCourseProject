@@ -6,9 +6,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6968ff6-ab3b-4db4-a815-8feaf8519843" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Maps/Start.umap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/UI/Start_UI.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AnimStarterPack/AimOffsets/Aim_Space_Hip.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AnimStarterPack/AimOffsets_ironsights/CC.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AnimStarterPack/AimOffsets_ironsights/CD.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AnimStarterPack/AimOffsets_ironsights/CU.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AnimStarterPack/AimOffsets_ironsights/LC.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AnimStarterPack/AimOffsets_ironsights/LD.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AnimStarterPack/AimOffsets_ironsights/LL.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AnimStarterPack/AimOffsets_ironsights/LU.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AnimStarterPack/AimOffsets_ironsights/Luu.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AnimStarterPack/AimOffsets_ironsights/RC.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AnimStarterPack/AimOffsets_ironsights/RD.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AnimStarterPack/AimOffsets_ironsights/RR.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AnimStarterPack/AimOffsets_ironsights/RU.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/Actor/BP_WeaponRangeDoll.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/Actor/WeaponRangeDoll.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Maps/playground.umap" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Materials/BasicShapeMaterial.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Materials/white.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TecentCourseProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TecentCourseProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AnimStarterPack/Aim_Space_Hip.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AnimStarterPack/Aim_Space_Ironsights.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/AnimStarterPack/UE4ASP_HeroTPP_AnimBlueprint.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AnimStarterPack/UE4ASP_HeroTPP_AnimBlueprint.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/PlayerPawn.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/PlayerPawn.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Start.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/WeaponEffects/ShellEject/M_ShellEjectMetal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/WeaponEffects/ShellEject/M_ShellEjectMetal.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/TCPPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/TCPPlayer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/TCPPlayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/TCPPlayer.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +64,8 @@
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/TCPWeapon.cpp" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/HealthComponent.h" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/HealthComponent.cpp" />
-      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/TCPPlayer.h" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/TCPPlayer.cpp" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/TCPPlayer.h" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lGd9Y8iaJnrBY9jEd9pOgYEHrh" />
@@ -294,6 +319,9 @@
       <workItem from="1607408073970" duration="336000" />
       <workItem from="1607515755346" duration="3863000" />
       <workItem from="1607582835723" duration="9913000" />
+      <workItem from="1607683564125" duration="25000" />
+      <workItem from="1607685076694" duration="214000" />
+      <workItem from="1607685318352" duration="837000" />
     </task>
     <task id="LOCAL-00001" summary="添加生命值组件">
       <created>1607515853219</created>

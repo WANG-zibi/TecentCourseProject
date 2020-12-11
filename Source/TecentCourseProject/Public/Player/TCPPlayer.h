@@ -44,6 +44,8 @@ protected:
 	
 	void Fire();
 
+    UFUNCTION()
+	bool GetIsAiming();
 
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Components")
 	UCameraComponent* CamComp;
@@ -57,7 +59,7 @@ protected:
 	void OnHealthChanged(class UHealthComponent* HealthComp,float HP,float HPDelta,const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
 	UPROPERTY(Replicated,BlueprintReadOnly,Category="Player")
 	bool bDied;
-	
+	UPROPERTY(BlueprintReadWrite)
 	bool bWantToZoom;
 	UPROPERTY(EditDefaultsOnly,Category="Zoom",meta = (ClampMin = 0.1,ClampMax = 100))
 	//聚焦速度

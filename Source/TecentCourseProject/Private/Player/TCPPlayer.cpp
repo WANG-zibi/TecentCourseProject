@@ -147,6 +147,10 @@ void ATCPPlayer::Fire()
 		}
 }
 
+bool ATCPPlayer::GetIsAiming()
+{
+	return bWantToZoom;
+}
 
 
 void ATCPPlayer::OnHealthChanged(class UHealthComponent* HealthComp,float HP,float HPDelta,const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
