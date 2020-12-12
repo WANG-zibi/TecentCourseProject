@@ -27,5 +27,7 @@
 - 添加联机时动画播放，子弹，武器等的同步效果
 - 加入联机大厅
 
-链接：https://pan.baidu.com/s/14Uq02u6jhkhp77fQjWiSJg 
-提取码：edu2 
+视频链接：https://pan.baidu.com/s/1W1JnyjtyR3hlYY3MEamHVw 
+提取码：ug65 
+APP链接：链接：https://pan.baidu.com/s/1MOx9f6SNikZ2Mg_TLyGJyg 
+提取码：6qbl 

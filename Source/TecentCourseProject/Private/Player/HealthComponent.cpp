@@ -15,7 +15,8 @@ UHealthComponent::UHealthComponent()
 	PrimaryComponentTick.bCanEverTick = true;
 	DefaultHP = 100;
 	HP = DefaultHP;
-	SetIsReplicated(true);
+	
+	this->SetIsReplicatedByDefault(true);
 	// ...
 }
 
