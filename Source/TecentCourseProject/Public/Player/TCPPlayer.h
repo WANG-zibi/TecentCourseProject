@@ -7,9 +7,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/Character.h"
 #include "Weapon/TCPWeapon.h"
-
 #include "TCPPlayer.generated.h"
-
 
 UCLASS()
 class TECENTCOURSEPROJECT_API ATCPPlayer : public ACharacter
@@ -28,12 +26,15 @@ protected:
 	 */
 	void MoveForward(float val);
 	void MoveRight(float val);
+	void LookUpAtRate(float Rate);
+	UFUNCTION()
 	void BeginCrouch();
+	UFUNCTION()
 	void EndCrouch();
 
 	void BeginZoom();
+	void TurnAtRate(float Rate);
 	void EndZoom();
-
 
 	UPROPERTY(Replicated,VisibleDefaultsOnly,Category="Weapon")
 	ATCPWeapon* CurWeapon;
@@ -46,7 +47,14 @@ protected:
 
     UFUNCTION()
 	bool GetIsAiming();
+	
+	UFUNCTION(BlueprintCallable)
+	ATCPWeapon* GetWeapon() const;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	float BaseLookUpRate;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	float BaseTurnRate;
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Components")
 	UCameraComponent* CamComp;
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Components")
@@ -61,6 +69,9 @@ protected:
 	bool bDied;
 	UPROPERTY(BlueprintReadWrite)
 	bool bWantToZoom;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool bWantToCourch;
 	UPROPERTY(EditDefaultsOnly,Category="Zoom",meta = (ClampMin = 0.1,ClampMax = 100))
 	//聚焦速度
 	float ZoomSpeeed;

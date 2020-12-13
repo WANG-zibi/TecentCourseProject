@@ -17,6 +17,8 @@
 
 ## 2020/12/9
 
+由于考试比赛等一大堆因素，鸽了好久，现在补上不知道来不来得及~
+
 重构代码，完成二三四五六次作业中的：
 
 - 场景中有固定生成并自动刷新的**靶子**，击中每一个靶子获得10分
@@ -24,10 +26,11 @@
 - 添加俯仰效果
 - 具有两种武器，分别使用射线以及投掷物，并且添加开火以及子弹射击轨迹动画
 - 添加生命值与计分UI
+- 安卓端操作简易UI(即将重构)
 - 添加联机时动画播放，子弹，武器等的同步效果
 - 加入联机大厅
 
 视频链接：https://pan.baidu.com/s/1W1JnyjtyR3hlYY3MEamHVw 
 提取码：ug65 
-APP链接：链接：https://pan.baidu.com/s/1MOx9f6SNikZ2Mg_TLyGJyg 
-提取码：6qbl 
+APP链接：链接：https://pan.baidu.com/s/1Qk1avBmdxtDbqcdD_ty1og 
+提取码：gctc 

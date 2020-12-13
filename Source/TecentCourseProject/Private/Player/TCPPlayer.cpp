@@ -29,9 +29,12 @@ ATCPPlayer::ATCPPlayer()
 	ZoomSpeeed = 2.0f;
 	bDied = false;
 	SocketName = "WeaponSocket";
+	BaseTurnRate = 45.f;
+	BaseLookUpRate = 45.f;
+	bWantToCourch =false;
 }
 
-// Called when the game starts or when spawned
+//Called when the game starts or when spawned
 void ATCPPlayer::BeginPlay()
 {
 	Super::BeginPlay();
@@ -48,9 +51,8 @@ void ATCPPlayer::BeginPlay()
 			CurWeapon->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetIncludingScale,SocketName);
 		}
 	}
-	
-
 }
+
 
 // Called every frame
 void ATCPPlayer::Tick(float DeltaTime)
@@ -69,7 +71,8 @@ void ATCPPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	PlayerInputComponent->BindAxis("MoveRight",this,&ATCPPlayer::MoveRight);
 	PlayerInputComponent->BindAxis("LookUp",this,&ATCPPlayer::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("Turn",this,&ATCPPlayer::AddControllerYawInput);
-	
+	PlayerInputComponent->BindAxis("TurnRate", this, &ATCPPlayer::TurnAtRate);
+	PlayerInputComponent->BindAxis("LookUpRate", this, &ATCPPlayer::LookUpAtRate);
 	PlayerInputComponent->BindAction("Crouch",IE_Pressed,this,&ATCPPlayer::BeginCrouch);
 	PlayerInputComponent->BindAction("Jump",IE_Pressed,this,&ATCPPlayer::Jump);
 	PlayerInputComponent->BindAction("Crouch",IE_Released,this,&ATCPPlayer::EndCrouch);
@@ -113,6 +116,14 @@ void ATCPPlayer::MoveRight(float val)
 /*
  * 开始下蹲
  */
+
+void ATCPPlayer::LookUpAtRate(float Rate)
+{
+	// calculate delta for this frame from the rate information
+	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
+}
+
+
 void ATCPPlayer::BeginCrouch()
 {
 	Crouch();
@@ -131,6 +142,14 @@ void ATCPPlayer::BeginZoom()
 {
 	bWantToZoom = true;
 }
+
+void ATCPPlayer::TurnAtRate(float Rate)
+{
+	// calculate delta for this frame from the rate information
+	AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds());
+}
+
+
 /*
  * 结束聚焦
  */
@@ -150,6 +169,11 @@ void ATCPPlayer::Fire()
 bool ATCPPlayer::GetIsAiming()
 {
 	return bWantToZoom;
+}
+
+ATCPWeapon* ATCPPlayer::GetWeapon() const
+{
+	return CurWeapon;
 }
 
 
