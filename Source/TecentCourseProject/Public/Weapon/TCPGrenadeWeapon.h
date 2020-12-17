@@ -17,4 +17,8 @@ protected:
 	virtual void Fire() override;
 	UPROPERTY(EditDefaultsOnly,Category="zidan")
 	TSubclassOf<AActor> ProjectileClass;
+
+	UFUNCTION(Server,Reliable,WithValidation)
+    void ServerShoot();
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 };

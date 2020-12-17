@@ -43507,6 +43507,7 @@
       <e p=".gitignore" t="Include" />
       <e p="Config" t="Include">
         <e p="DefaultEditor.ini" t="Include" />
+        <e p="DefaultEditorPerProjectUserSettings.ini" t="Include" />
         <e p="DefaultEngine.ini" t="Include" />
         <e p="DefaultGame.ini" t="Include" />
         <e p="DefaultInput.ini" t="Include" />
@@ -43528,6 +43529,8 @@
               <e p="TCPPlayer.cpp" t="Include" />
             </e>
             <e p="Weapon" t="Include">
+              <e p="AutomaticRifle.cpp" t="Include" />
+              <e p="GrenadeProjectile.cpp" t="Include" />
               <e p="TCPGrenadeWeapon.cpp" t="Include" />
               <e p="TCPWeapon.cpp" t="Include" />
             </e>
@@ -43538,6 +43541,8 @@
               <e p="TCPPlayer.h" t="Include" />
             </e>
             <e p="Weapon" t="Include">
+              <e p="AutomaticRifle.h" t="Include" />
+              <e p="GrenadeProjectile.h" t="Include" />
               <e p="TCPGrenadeWeapon.h" t="Include" />
               <e p="TCPWeapon.h" t="Include" />
             </e>

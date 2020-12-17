@@ -42,7 +42,6 @@ void UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDam
 	AController* InstigatedBy, AActor* DamageCauser)
 {
 	if(Damage <= 0.0f) return;
-
 	HP = FMath::Clamp(HP - Damage,0.0f,DefaultHP);
 	UE_LOG(LogTemp,Warning,TEXT("Health Changed:%s"),*FString::SanitizeFloat(HP));
 	OnHealthChanged.Broadcast(this,HP,Damage,DamageType,InstigatedBy,DamageCauser);

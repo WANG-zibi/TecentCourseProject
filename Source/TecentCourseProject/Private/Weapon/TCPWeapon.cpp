@@ -3,11 +3,13 @@
 
 #include "Weapon/TCPWeapon.h"
 #include "Components/SkeletalMeshComponent.h"
+
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 #include "PhysicalMaterials/PhysicalMaterial.h"
 #include "Particles/ParticleSystem.h"
 #include "Particles/ParticleSystemComponent.h"
+#include "Player/TCPPlayer.h"
 // Sets default values
 
 ATCPWeapon::ATCPWeapon()
@@ -18,8 +20,6 @@ ATCPWeapon::ATCPWeapon()
 	RootComponent = WeaponMesh;
 	MuzzleSocketName = "MuzzleSocket";
 	TracerTargetName = "Target";
-
-
 	SetReplicates(true);
 	NetUpdateFrequency = 66;
 	MinNetUpdateFrequency = 33;
@@ -159,6 +159,9 @@ void ATCPWeapon::HitEffect(FVector ImpactPoint,EPhysicalSurface PhysicSurface)
 	}
 	
 }
+
+
+
 void ATCPWeapon::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);

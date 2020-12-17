@@ -3,10 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/CapsuleComponent.h"
 #include "GameFramework/Actor.h"
 #include "TCPWeapon.generated.h"
 class USkeletalMeshComponent;
 class UParticleSystem;
+class USphereComponent;
 USTRUCT()
 struct FHitScanTrace
 {
@@ -14,10 +16,8 @@ struct FHitScanTrace
 public:
 	UPROPERTY()
 	TEnumAsByte<EPhysicalSurface> SurfaceType;
-
 	UPROPERTY()
 	FVector_NetQuantize TraceTo;
-	
 };
 
 
@@ -53,18 +53,19 @@ protected:
 	UParticleSystem* FleshImpactEffect;
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Effect")
 	UParticleSystem* TracerEffect;
-
 	UPROPERTY(EditDefaultsOnly,Category="Weapon")
 	TSubclassOf<UCameraShake> OpenFireShake;
+
 	/*
 	 * 武器Mesh
 	 */
 UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Components")
 	USkeletalMeshComponent* WeaponMesh;
-
-	
+	/*
+	 * 服务器端开火
+	 */
 	UFUNCTION(Server,Reliable,WithValidation)
-    void ServerFire();
+    virtual void ServerFire();
 
 	UPROPERTY(ReplicatedUsing=OnRep_HitScanTrace)
 	FHitScanTrace HitScanTrace;
@@ -74,7 +75,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	void WeaponEffect(FVector& TracerEndPoint);
-	
 	void HitEffect(FVector ImoactPoint,EPhysicalSurface SurfaceType);
 	
 };

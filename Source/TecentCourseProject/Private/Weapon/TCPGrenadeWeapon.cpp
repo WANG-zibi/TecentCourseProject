@@ -18,3 +18,18 @@ void ATCPGrenadeWeapon::Fire()
 		GetWorld()->SpawnActor<AActor>(ProjectileClass, MuzzleLocation,EyeRotation,SpawnParameters);
 	}
 }
+
+void ATCPGrenadeWeapon::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+}
+
+void ATCPGrenadeWeapon::ServerShoot_Implementation()
+{
+	Fire();
+}
+
+bool ATCPGrenadeWeapon::ServerShoot_Validate()
+{
+	return true;
+}

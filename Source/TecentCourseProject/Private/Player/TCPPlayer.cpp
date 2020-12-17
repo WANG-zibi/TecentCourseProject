@@ -1,6 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Player/TCPPlayer.h"
+
+#include <list>
+
 #include"Components/SkeletalMeshComponent.h"
 #include "Player/HealthComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -15,7 +18,6 @@ ATCPPlayer::ATCPPlayer()
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpingArmComp"));
 	SpringArmComp->SetupAttachment(RootComponent);
 	SpringArmComp->bUsePawnControlRotation = true;
-
 	HPComp = CreateDefaultSubobject<UHealthComponent>(TEXT("HelathComp"));
 	/*
 	 * 设置摄像头
@@ -32,6 +34,7 @@ ATCPPlayer::ATCPPlayer()
 	BaseTurnRate = 45.f;
 	BaseLookUpRate = 45.f;
 	bWantToCourch =false;
+	bIsEquiped = false;
 }
 
 //Called when the game starts or when spawned
@@ -45,12 +48,24 @@ void ATCPPlayer::BeginPlay()
 		FActorSpawnParameters SpawnParameters;
 		SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 		CurWeapon = GetWorld()->SpawnActor<ATCPWeapon>(InitWeaponClass,FVector::ZeroVector,FRotator::ZeroRotator,SpawnParameters);
+		
 		if(CurWeapon)
 		{
 			CurWeapon->SetOwner(this);
 			CurWeapon->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetIncludingScale,SocketName);
 		}
 	}
+}
+
+
+void ATCPPlayer::EquipWeapon(ATCPWeapon* NeedWeapon)
+{
+	std::swap(CurWeapon,NeedWeapon);
+}
+
+void ATCPPlayer::OnPressEquiped()
+{	
+	bIsEquiped = true;
 }
 
 
@@ -79,6 +94,7 @@ void ATCPPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	PlayerInputComponent->BindAction("Zoom",IE_Pressed,this,&ATCPPlayer::BeginZoom);
 	PlayerInputComponent->BindAction("Zoom",IE_Released,this,&ATCPPlayer::EndZoom);
 	PlayerInputComponent->BindAction("Fire",IE_Pressed,this,&ATCPPlayer::Fire);
+
 }
 /*
  * 重写获取摄像机镜头函数
@@ -192,5 +208,6 @@ void ATCPPlayer::OnHealthChanged(class UHealthComponent* HealthComp,float HP,flo
 	}
 	
 }
+
 
 
