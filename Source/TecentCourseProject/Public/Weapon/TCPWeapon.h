@@ -31,11 +31,17 @@ public:
 	ATCPWeapon();
 	UFUNCTION(BlueprintCallable,Category="Weapon")
     virtual void Fire();
-
+	float LastFireTime;
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Weapon")
+	float RateOfFire;
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Weapon")
+	float TimeBetweenShots;
+	virtual void StopFire();
+	virtual void StartFire();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	
+	FTimerHandle TimeHandle_TimeShots;
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Weapon")
 	TSubclassOf<class UDamageType>DamageTye;
 	UPROPERTY(VisibleDefaultsOnly,BlueprintReadOnly,Category="Weapon")
@@ -66,7 +72,7 @@ UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Components")
 	 */
 	UFUNCTION(Server,Reliable,WithValidation)
     virtual void ServerFire();
-
+	
 	UPROPERTY(ReplicatedUsing=OnRep_HitScanTrace)
 	FHitScanTrace HitScanTrace;
 	UFUNCTION()

@@ -35,6 +35,7 @@ ATCPPlayer::ATCPPlayer()
 	BaseLookUpRate = 45.f;
 	bWantToCourch =false;
 	bIsEquiped = false;
+	bFire = false;
 }
 
 //Called when the game starts or when spawned
@@ -93,7 +94,8 @@ void ATCPPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	PlayerInputComponent->BindAction("Crouch",IE_Released,this,&ATCPPlayer::EndCrouch);
 	PlayerInputComponent->BindAction("Zoom",IE_Pressed,this,&ATCPPlayer::BeginZoom);
 	PlayerInputComponent->BindAction("Zoom",IE_Released,this,&ATCPPlayer::EndZoom);
-	PlayerInputComponent->BindAction("Fire",IE_Pressed,this,&ATCPPlayer::Fire);
+	PlayerInputComponent->BindAction("Fire",IE_Pressed,this,&ATCPPlayer::StartFire);
+	PlayerInputComponent->BindAction("Fire",IE_Released,this,&ATCPPlayer::StopFire);
 
 }
 /*
@@ -174,12 +176,22 @@ void ATCPPlayer::EndZoom()
 	bWantToZoom = false;
 }
 
-void ATCPPlayer::Fire()
+void ATCPPlayer::StartFire()
 {
 		if(CurWeapon)
 		{
-			CurWeapon->Fire();
+			bFire = true;
+			CurWeapon->StartFire();
 		}
+}
+
+void ATCPPlayer::StopFire()
+{
+	if(CurWeapon)
+	{
+		bFire = false;
+		CurWeapon->StopFire();
+	}
 }
 
 bool ATCPPlayer::GetIsAiming()

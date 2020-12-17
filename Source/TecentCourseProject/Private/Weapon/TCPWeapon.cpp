@@ -23,6 +23,22 @@ ATCPWeapon::ATCPWeapon()
 	SetReplicates(true);
 	NetUpdateFrequency = 66;
 	MinNetUpdateFrequency = 33;
+	RateOfFire = 100.0f;
+	TimeBetweenShots = 60/RateOfFire;
+}
+
+void ATCPWeapon::StopFire()
+{
+	GetWorldTimerManager().ClearTimer(TimeHandle_TimeShots);
+}
+
+void ATCPWeapon::StartFire()
+{
+	Fire();
+	// float FirstDelay = LastFireTime + TimeBetweenShots - GetWorld()->TimeSeconds;
+	// FirstDelay = FMath::Max(FirstDelay,0.0f);
+	// 	GetWorldTimerManager().ClearTimer(TimeHandle_TimeShots);
+	// GetWorldTimerManager().SetTimer(TimeHandle_TimeShots,this,&ATCPWeapon::Fire,TimeBetweenShots,true,FirstDelay);
 }
 
 // Called when the game starts or when spawned
@@ -79,9 +95,8 @@ void ATCPWeapon::Fire()
 				HitScanTrace.TraceTo = TracerEndPoint;
 				HitScanTrace.SurfaceType = PhysicSurface;
 			}
+			LastFireTime = GetWorld()->TimeSeconds;
 		}
-	
-	
 }
 
 void ATCPWeapon::ServerFire_Implementation()

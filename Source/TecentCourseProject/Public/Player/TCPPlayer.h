@@ -67,7 +67,8 @@ protected:
 	UPROPERTY(VisibleDefaultsOnly,Category="Weapon")
 	FName SocketName;
 	//开火与攻击
-	void Fire();
+	void StartFire();
+	void StopFire();
     UFUNCTION()
 	bool GetIsAiming();
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Components")
@@ -84,8 +85,8 @@ protected:
 	
 	UPROPERTY(Replicated,BlueprintReadOnly,Category="Player")
 	bool bDied;
-
-
+	UPROPERTY(Replicated,BlueprintReadOnly,Category="Player")
+	bool bFire;
 	void OnPressEquiped();
 
 	

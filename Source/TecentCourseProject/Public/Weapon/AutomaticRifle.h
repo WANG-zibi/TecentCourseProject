@@ -13,5 +13,9 @@ UCLASS()
 class TECENTCOURSEPROJECT_API AAutomaticRifle : public ATCPWeapon
 {
 	GENERATED_BODY()
+	AAutomaticRifle();
+	virtual void StopFire() override;
+
 	
+	virtual void StartFire() override;
 };
