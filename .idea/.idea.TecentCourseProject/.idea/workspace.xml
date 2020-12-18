@@ -6,18 +6,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6968ff6-ab3b-4db4-a815-8feaf8519843" name="Default Changelist" comment="修复榴弹枪bug，将第一人称模板里的枪模型拿来做榴弹枪模型">
+      <change afterPath="$PROJECT_DIR$/Content/AI/BB_AdvancedAI.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/BP_AI.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/BP_AIRifle.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/BP_EQSTestingPawn.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/BT_AI.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/Decorator_CheckBelowHealth.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/Decorator_DistanceTo.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/Decorator_DistanceTo_New.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/EQS_FindCover.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/EQS_FindMoveTo.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/EQS_FindNearestPlayer.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/EnvQueryContext_AllPlayers.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/EnvQueryContext_TargetActor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/Service_SelectTargetActor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/Task_AttackTarget.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/AI/Task_HealSelf.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/Actor/BP_WeaponPickUp.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Environment/MF_WorldUVs.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Environment/MI_BlockoutSimple_Inst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Environment/M_BasicBox.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Environment/M_BlockoutSimple.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Online/TCPGameMode.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Online/TCPGameState.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/tcpPlayerState.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Online/TCPGameMode.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Online/TCPGameState.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/tcpPlayerState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TecentCourseProject/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TecentCourseProject/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TecentCourseProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TecentCourseProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AnimStarterPack/Fire_Rifle_Hip.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AnimStarterPack/Fire_Rifle_Hip.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AnimStarterPack/Fire_Rifle_Ironsights.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AnimStarterPack/Fire_Rifle_Ironsights.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AnimStarterPack/UE4ASP_HeroTPP_AnimBlueprint.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AnimStarterPack/UE4ASP_HeroTPP_AnimBlueprint.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_TestGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_TestGameMode.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/PlayerPawn.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/PlayerPawn.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/BP_Rifle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/BP_Rifle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/StartMode.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/UI/Health_View.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/UI/Health_View.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/BP_AutoRifle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/BP_AutoRifle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/BP_liudanWeapon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/BP_liudanWeapon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Level1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Level1.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Start.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Start.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/playground.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/playground.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/Start_UI.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/HealthComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/HealthComponent.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/TCPPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/TCPPlayer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/AutomaticRifle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/AutomaticRifle.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/TCPWeapon.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/TCPWeapon.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/HealthComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/HealthComponent.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/TCPPlayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/TCPPlayer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/AutomaticRifle.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/AutomaticRifle.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/TCPWeapon.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/TCPWeapon.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/TecentCourseProjectGameModeBase.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TecentCourseProject/TecentCourseProjectGameModeBase.h" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,26 +65,33 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/Kismet/GameplayStatics.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/AIModule/Classes/EnvironmentQuery/EnvQuery.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/PlayerState.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/include/utility" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Character.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/Components/PrimitiveComponent.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/Engine/EngineTypes.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Core/Public/Templates/UnrealTemplate.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/GameModeBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/Camera/CameraComponent.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/GameModeBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Core/Private/Containers/String.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Actor.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Core/Public/Templates/AndOrNot.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Public/Net/UnrealNetwork.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/CharacterMovementComponent.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Core/Public/Delegates/Delegate.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Core/Public/Logging/LogMacros.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://D:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/include/utility" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/Character.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Character.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/Engine/StaticMesh.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Components/SkeletalMeshComponent.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/Components/PrimitiveComponent.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/ThirdParty/PhysX3/APEX_1.4/include/ApexDefs.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/Engine/EngineTypes.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/DefaultPawn.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Components/SceneComponent.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Core/Public/Templates/UnrealTemplate.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Components/ActorComponent.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/Camera/CameraComponent.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Core/Private/Containers/String.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Actor.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Core/Public/Math/Sphere.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/Components/ActorComponent.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -56,16 +99,26 @@
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/TecentCourseProject.h" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/HlealthComponent.h" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/HlealthComponent.cpp" />
-      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/HealthComponent.h" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/TCPGrenadeWeapon.cpp" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/TCPGrenadeWeapon.h" />
-      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/HealthComponent.cpp" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/GrenadeProjectile.h" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/GrenadeProjectile.cpp" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/AutomaticRifle.h" />
-      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/TCPWeapon.h" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/AutomaticRifle.cpp" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/tcpPlayerState.cpp" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Online/TCPGameState.cpp" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Online/TCPGameState.h" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/TCPWeapon.h" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/TCPWeapon.cpp" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/tcpPlayerState.h" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/HealthComponent.h" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/HealthComponent.cpp" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Online/TCPGameMode.h" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Online/TCPGameMode.cpp" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/PickUp/PickUp.h" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/PickUp/PickUp.cpp" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Weapon/WeaponPickUp.cpp" />
+      <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Weapon/WeaponPickUp.h" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Public/Player/TCPPlayer.h" />
       <option value="$PROJECT_DIR$/Source/TecentCourseProject/Private/Player/TCPPlayer.cpp" />
     </changedPaths>
@@ -330,6 +383,8 @@
       <workItem from="1608115378366" duration="13102000" />
       <workItem from="1608181805081" duration="4802000" />
       <workItem from="1608189741784" duration="3038000" />
+      <workItem from="1608194970437" duration="10926000" />
+      <workItem from="1608264561563" duration="17520000" />
     </task>
     <task id="LOCAL-00001" summary="添加生命值组件">
       <created>1607515853219</created>

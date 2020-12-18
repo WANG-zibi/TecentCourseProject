@@ -6,6 +6,7 @@
 
 #include "GeneratedCodeHelpers.h"
 #include "GameFramework/GameModeBase.h"
+#include "Online/TCPGameMode.h"
 
 // Sets default values for this component's properties
 UHealthComponent::UHealthComponent()
@@ -15,7 +16,8 @@ UHealthComponent::UHealthComponent()
 	PrimaryComponentTick.bCanEverTick = true;
 	DefaultHP = 100;
 	HP = DefaultHP;
-	
+	bIsDead = false;
+
 	this->SetIsReplicatedByDefault(true);
 	// ...
 }
@@ -37,6 +39,20 @@ void UHealthComponent::BeginPlay()
 	
 }
 
+void UHealthComponent::Heal(float HealAmount)
+{
+	if (HealAmount <= 0.0f || HP <= 0.0f)
+	{
+		return;
+	}
+
+	HP = FMath::Clamp(HP + HealAmount, 0.0f, DefaultHP);
+
+	UE_LOG(LogTemp, Log, TEXT("Health Changed: %s (+%s)"), *FString::SanitizeFloat(HP), *FString::SanitizeFloat(HealAmount));
+
+	OnHealthChanged.Broadcast(this, HP, -HealAmount, nullptr, nullptr, nullptr);
+}
+
 
 void UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType,
 	AController* InstigatedBy, AActor* DamageCauser)
@@ -45,6 +61,16 @@ void UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDam
 	HP = FMath::Clamp(HP - Damage,0.0f,DefaultHP);
 	UE_LOG(LogTemp,Warning,TEXT("Health Changed:%s"),*FString::SanitizeFloat(HP));
 	OnHealthChanged.Broadcast(this,HP,Damage,DamageType,InstigatedBy,DamageCauser);
+	bIsDead = HP <= 0.0f;
+		if(bIsDead)
+		{
+			auto GM = Cast<ATCPGameMode>(GetWorld()->GetAuthGameMode());
+			if (GM)
+			{
+				GM->OnActorKilled.Broadcast(GetOwner(), DamageCauser, InstigatedBy);
+			}
+		}
+	
 }
 
 float UHealthComponent::GetHP() const

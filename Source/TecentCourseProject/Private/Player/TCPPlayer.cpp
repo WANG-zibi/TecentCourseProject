@@ -1,9 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Player/TCPPlayer.h"
-
-#include <list>
-
 #include"Components/SkeletalMeshComponent.h"
 #include "Player/HealthComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -13,8 +10,6 @@
 ATCPPlayer::ATCPPlayer()
 {
 	PrimaryActorTick.bCanEverTick = true;
-	//GetMovementComponent()->GetNavAgentPropertiesRef().bCanCrouch = true;
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpingArmComp"));
 	SpringArmComp->SetupAttachment(RootComponent);
 	SpringArmComp->bUsePawnControlRotation = true;
@@ -30,6 +25,8 @@ ATCPPlayer::ATCPPlayer()
 	ZoomFOV = 65.0f;
 	ZoomSpeeed = 2.0f;
 	bDied = false;
+	bWantToCourch =false;
+	bWantToZoom = false;
 	SocketName = "WeaponSocket";
 	BaseTurnRate = 45.f;
 	BaseLookUpRate = 45.f;
@@ -56,17 +53,6 @@ void ATCPPlayer::BeginPlay()
 			CurWeapon->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetIncludingScale,SocketName);
 		}
 	}
-}
-
-
-void ATCPPlayer::EquipWeapon(ATCPWeapon* NeedWeapon)
-{
-	std::swap(CurWeapon,NeedWeapon);
-}
-
-void ATCPPlayer::OnPressEquiped()
-{	
-	bIsEquiped = true;
 }
 
 
@@ -199,9 +185,17 @@ bool ATCPPlayer::GetIsAiming()
 	return bWantToZoom;
 }
 
-ATCPWeapon* ATCPPlayer::GetWeapon() const
+ATCPWeapon* ATCPPlayer::GetWeapon()
 {
 	return CurWeapon;
+}
+
+void ATCPPlayer::SetWeapon(ATCPWeapon* newWeapon)
+{
+		CurWeapon = newWeapon;
+		CurWeapon->SetOwner(this);
+		CurWeapon->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetIncludingScale,SocketName);
+	
 }
 
 
@@ -213,9 +207,12 @@ void ATCPPlayer::OnHealthChanged(class UHealthComponent* HealthComp,float HP,flo
 		bDied = true;
 		GetMovementComponent()->StopMovementImmediately();
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-
 		DetachFromControllerPendingDestroy();
-		SetLifeSpan(10.0f);
+		SetLifeSpan(3.0f);
+		if(CurWeapon)
+		{
+			CurWeapon->Destroy();
+		}
 		
 	}
 	

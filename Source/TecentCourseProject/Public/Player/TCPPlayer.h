@@ -57,18 +57,17 @@ protected:
 	//武器
 	UPROPERTY(Replicated,VisibleDefaultsOnly,Category="Weapon")
 	ATCPWeapon* CurWeapon;
-	UFUNCTION(BlueprintCallable)
-    ATCPWeapon* GetWeapon() const;
 	
+
+
+
 	UPROPERTY(EditDefaultsOnly,Category="Weapon")
 	TSubclassOf<ATCPWeapon>InitWeaponClass;
 
 	
-	UPROPERTY(VisibleDefaultsOnly,Category="Weapon")
+	UPROPERTY(EditDefaultsOnly,Category="Weapon")
 	FName SocketName;
-	//开火与攻击
-	void StartFire();
-	void StopFire();
+	
     UFUNCTION()
 	bool GetIsAiming();
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Components")
@@ -79,7 +78,6 @@ protected:
 	//生命值系统
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Components")
 	class UHealthComponent* HPComp;
-	
 	UFUNCTION()
 	void OnHealthChanged(class UHealthComponent* HealthComp,float HP,float HPDelta,const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
 	
@@ -87,12 +85,10 @@ protected:
 	bool bDied;
 	UPROPERTY(Replicated,BlueprintReadOnly,Category="Player")
 	bool bFire;
-	void OnPressEquiped();
 
 	
-	
 public:
-	void EquipWeapon(ATCPWeapon* NeedWeapon);
+	UPROPERTY(Replicated,BlueprintReadWrite,Category="Weapon")
 	bool bIsEquiped;
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -101,5 +97,14 @@ public:
 	
 	virtual FVector GetPawnViewLocation() const override;
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-	
+	//开火与攻击
+	UFUNCTION(BlueprintCallable, Category = "Player")
+    void StartFire();
+	UFUNCTION(BlueprintCallable, Category = "Player")
+    void StopFire();
+
+	UFUNCTION(BlueprintCallable)
+    ATCPWeapon* GetWeapon();
+	UFUNCTION(BlueprintCallable)
+	void SetWeapon(ATCPWeapon* newWeapon);
 };

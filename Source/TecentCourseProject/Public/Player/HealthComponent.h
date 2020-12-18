@@ -20,17 +20,22 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
-	UPROPERTY(Replicated,BlueprintReadOnly,Category="HP")
+	UPROPERTY(Replicated, BlueprintReadWrite, Category = "HealthComponent")
 	float HP;
+	bool bIsDead;
 
-	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="HP")
 	float DefaultHP;
 	UFUNCTION()
+	
 	void TakeDamage(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
 public:
+	UFUNCTION(BlueprintCallable)
 	float GetHP() const;
 	// Called every frame
+	UFUNCTION(BlueprintCallable, Category = "HealthComponent")
+	void Heal(float HealAmount);
+
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	UPROPERTY(BlueprintAssignable,Category="Events")
 	FOnHealthChangedSignature OnHealthChanged;	

@@ -43524,9 +43524,14 @@
       <e p="Source" t="Include">
         <e p="TecentCourseProject" t="Include">
           <e p="Private" t="Include">
+            <e p="Online" t="Include">
+              <e p="TCPGameMode.cpp" t="Include" />
+              <e p="TCPGameState.cpp" t="Include" />
+            </e>
             <e p="Player" t="Include">
               <e p="HealthComponent.cpp" t="Include" />
               <e p="TCPPlayer.cpp" t="Include" />
+              <e p="tcpPlayerState.cpp" t="Include" />
             </e>
             <e p="Weapon" t="Include">
               <e p="AutomaticRifle.cpp" t="Include" />
@@ -43536,9 +43541,14 @@
             </e>
           </e>
           <e p="Public" t="Include">
+            <e p="Online" t="Include">
+              <e p="TCPGameMode.h" t="Include" />
+              <e p="TCPGameState.h" t="Include" />
+            </e>
             <e p="Player" t="Include">
               <e p="HealthComponent.h" t="Include" />
               <e p="TCPPlayer.h" t="Include" />
+              <e p="tcpPlayerState.h" t="Include" />
             </e>
             <e p="Weapon" t="Include">
               <e p="AutomaticRifle.h" t="Include" />
@@ -43550,8 +43560,6 @@
           <e p="TecentCourseProject.Build.cs" t="Include" />
           <e p="TecentCourseProject.cpp" t="Include" />
           <e p="TecentCourseProject.h" t="Include" />
-          <e p="TecentCourseProjectGameModeBase.cpp" t="Include" />
-          <e p="TecentCourseProjectGameModeBase.h" t="Include" />
         </e>
         <e p="TecentCourseProject.Target.cs" t="Include" />
         <e p="TecentCourseProjectEditor.Target.cs" t="Include" />

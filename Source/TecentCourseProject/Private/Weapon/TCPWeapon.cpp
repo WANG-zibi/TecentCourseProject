@@ -3,7 +3,7 @@
 
 #include "Weapon/TCPWeapon.h"
 #include "Components/SkeletalMeshComponent.h"
-
+#include "Components/SphereComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 #include "PhysicalMaterials/PhysicalMaterial.h"
@@ -17,16 +17,21 @@ ATCPWeapon::ATCPWeapon()
 
 	PrimaryActorTick.bCanEverTick = true;
 	WeaponMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WeaponMesh"));
+	BaseDamage = 20.0f;
 	RootComponent = WeaponMesh;
 	MuzzleSocketName = "MuzzleSocket";
 	TracerTargetName = "Target";
+	BulletSpread = 2.0f;
 	SetReplicates(true);
 	NetUpdateFrequency = 66;
 	MinNetUpdateFrequency = 33;
 	RateOfFire = 100.0f;
 	TimeBetweenShots = 60/RateOfFire;
 }
-
+void ATCPWeapon::BeginPlay()
+{
+	Super::BeginPlay();
+}
 void ATCPWeapon::StopFire()
 {
 	GetWorldTimerManager().ClearTimer(TimeHandle_TimeShots);
@@ -42,11 +47,7 @@ void ATCPWeapon::StartFire()
 }
 
 // Called when the game starts or when spawned
-void ATCPWeapon::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
+
 
 void ATCPWeapon::Fire()
 {
@@ -63,8 +64,11 @@ void ATCPWeapon::Fire()
 			CurOwner->GetActorEyesViewPoint(EyeLocation,EyeRotation);
 		
 			FVector ShotDirection = EyeRotation.Vector();
+			
+			// Bullet Spread
+			float HalfRad = FMath::DegreesToRadians(BulletSpread);
+			ShotDirection = FMath::VRandCone(ShotDirection, HalfRad, HalfRad);
 			FVector TraceEnd = EyeLocation + (ShotDirection * 10000);
-		
 			FHitResult Hit;
 		
 			FCollisionQueryParams QueryParams;
@@ -78,7 +82,7 @@ void ATCPWeapon::Fire()
 			{
 				AActor* HitActor = Hit.GetActor();
 				
-				UGameplayStatics::ApplyPointDamage(HitActor,20.0f,ShotDirection,Hit,CurOwner->GetInstigatorController(),this,DamageTye);
+				UGameplayStatics::ApplyPointDamage(HitActor,BaseDamage,ShotDirection,Hit,CurOwner->GetInstigatorController(),this,DamageTye);
 				PhysicSurface = UPhysicalMaterial::DetermineSurfaceType(Hit.PhysMaterial.Get());
 				
 				HitEffect(Hit.ImpactPoint,PhysicSurface);

@@ -31,6 +31,11 @@ public:
 	ATCPWeapon();
 	UFUNCTION(BlueprintCallable,Category="Weapon")
     virtual void Fire();
+	/* Bullet Spread in Degrees */
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon", meta = (ClampMin=0.0f))
+	float BulletSpread;
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
+	float BaseDamage;
 	float LastFireTime;
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Weapon")
 	float RateOfFire;
@@ -39,6 +44,10 @@ public:
 	virtual void StopFire();
 	virtual void StartFire();
 protected:
+
+	UPROPERTY(EditDefaultsOnly,Category="Collison")
+	USphereComponent* ColSphere;
+	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	FTimerHandle TimeHandle_TimeShots;
@@ -82,5 +91,4 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	void WeaponEffect(FVector& TracerEndPoint);
 	void HitEffect(FVector ImoactPoint,EPhysicalSurface SurfaceType);
-	
 };
